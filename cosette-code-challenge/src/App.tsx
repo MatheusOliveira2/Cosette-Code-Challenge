@@ -1,5 +1,5 @@
 import "./App.css";
-import Catalogue from "./components/pages/catalogue/catalogue";
+import Catalogue from "./components/pages/catalogue/Catalogue";
 
 function App() {
   return (
