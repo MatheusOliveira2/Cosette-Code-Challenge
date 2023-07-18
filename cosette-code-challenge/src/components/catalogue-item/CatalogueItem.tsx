@@ -7,12 +7,14 @@ type CatalogueItemProps = {
   vendor: string;
   title: string;
   newArrival: boolean;
+  currentPrice: number;
 };
 export default function CatalogueItem({
   src,
   vendor,
   title,
   newArrival,
+  currentPrice,
 }: CatalogueItemProps) {
   return (
     <>
@@ -24,11 +26,19 @@ export default function CatalogueItem({
         ></S.CardImage>
         <S.Content>
           <S.Info>
-            {newArrival && <div className="newArrival">New Arrival</div>}
-            <div className="vendor">{vendor}</div>
-            <div className="title">{title}</div>
+            <div className={`newArrival ${newArrival ? "" : "hidden"}`}>
+              NEW ARRIVAL
+            </div>
+            <div className="vendor" title={vendor}>
+              {vendor.toUpperCase()}
+            </div>
+            <div className="title" title={title}>
+              {title}
+            </div>
           </S.Info>
-          <S.Price></S.Price>
+          <S.Price>
+            <div className="currentPrice">${currentPrice.toFixed(0)}</div>
+          </S.Price>
         </S.Content>
       </S.ItemCard>
     </>

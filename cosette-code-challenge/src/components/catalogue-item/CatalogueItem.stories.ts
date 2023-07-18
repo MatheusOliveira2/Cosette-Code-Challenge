@@ -17,5 +17,6 @@ export const Primary: Story = {
     vendor: "PRADA",
     title: "Teste de title",
     newArrival: true,
+    currentPrice: 2008,
   },
 };

@@ -2,7 +2,7 @@ import { Card, CardMedia, CardMediaProps } from "@mui/material";
 import { styled } from "styled-components";
 
 export const ItemCard = styled(Card)<CardMediaProps>`
-  height: 430px;
+  height: 400px;
   width: 250px;
   background-color: green;
 
@@ -15,16 +15,17 @@ export const CardImage = styled(CardMedia)<CardMediaProps>`
   height: 250px;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1);
   }
 `;
 
 export const Content = styled.div`
   width: 100%;
-  background-color: yellow;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: crimson;
 `;
 
 export const Info = styled.div`
@@ -35,11 +36,18 @@ export const Info = styled.div`
 
   .title {
     font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .newArrival {
     font-size: 12px;
     font-weight: bold;
+
+    &.hidden {
+      visibility: hidden;
+    }
   }
 `;
 
