@@ -17,6 +17,7 @@ export const PriceDiv = styled.div`
     }
 
     .discount {
+      color: var(--secondary-color);
       margin-left: 12px;
     }
   }
