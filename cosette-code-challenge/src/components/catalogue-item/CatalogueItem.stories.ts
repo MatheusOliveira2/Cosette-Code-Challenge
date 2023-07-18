@@ -18,5 +18,6 @@ export const Primary: Story = {
     title: "Teste de title",
     newArrival: true,
     currentPrice: 2008,
+    comparePrice: 2500,
   },
 };

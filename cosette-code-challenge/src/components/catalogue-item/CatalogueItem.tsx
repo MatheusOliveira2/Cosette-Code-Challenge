@@ -1,6 +1,7 @@
 import * as S from "./style";
 import noImage from "../../assets/no-image-available.jpeg";
 import { CardContent } from "@mui/material";
+import ComparePrice from "../compare-price/ComparePrice";
 
 type CatalogueItemProps = {
   src: string;
@@ -8,6 +9,7 @@ type CatalogueItemProps = {
   title: string;
   newArrival: boolean;
   currentPrice: number;
+  comparePrice?: number;
 };
 export default function CatalogueItem({
   src,
@@ -15,10 +17,11 @@ export default function CatalogueItem({
   title,
   newArrival,
   currentPrice,
+  comparePrice,
 }: CatalogueItemProps) {
   return (
     <>
-      <S.ItemCard>
+      <S.ItemCard variant="outlined">
         <S.CardImage
           content="img"
           image={src}
@@ -37,7 +40,10 @@ export default function CatalogueItem({
             </div>
           </S.Info>
           <S.Price>
-            <div className="currentPrice">${currentPrice.toFixed(0)}</div>
+            <ComparePrice
+              currentPrice={currentPrice}
+              comparePrice={comparePrice}
+            ></ComparePrice>
           </S.Price>
         </S.Content>
       </S.ItemCard>
