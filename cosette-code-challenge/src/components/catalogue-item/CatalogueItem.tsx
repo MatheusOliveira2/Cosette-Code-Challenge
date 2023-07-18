@@ -3,7 +3,7 @@ import noImage from "../../assets/no-image-available.jpeg";
 import { CardContent } from "@mui/material";
 import ComparePrice from "../compare-price/ComparePrice";
 
-type CatalogueItemProps = {
+export type CatalogueItemProps = {
   src: string;
   vendor: string;
   title: string;
