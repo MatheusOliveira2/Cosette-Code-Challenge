@@ -1,14 +1,20 @@
+import { useEffect } from "react";
 import CatalogueItem, {
   CatalogueItemProps,
 } from "../../catalogue-item/CatalogueItem";
 import * as S from "./style";
 import { Grid } from "@mui/material";
+import axios from "../../../axios/axios";
 
 type CatalogueProps = {
   items: Array<CatalogueItemProps>;
 };
 
 export default function Catalogue({ items }: CatalogueProps) {
+  // useEffect(() => {
+  //   const loadData = async () => {};
+  //   void loadData();
+  // }, []);
   return (
     <S.Center>
       <Grid container spacing={2} justifyContent="center" maxWidth={900}>
