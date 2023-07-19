@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CatalogueItem, {
   CatalogueItemProps,
 } from "../../catalogue-item/CatalogueItem";
@@ -6,20 +6,35 @@ import * as S from "./style";
 import { Grid } from "@mui/material";
 import axios from "../../../axios/axios";
 
-type CatalogueProps = {
-  items: Array<CatalogueItemProps>;
+type ProductType = {
+  id: number;
+  title: string;
+  vendor: string;
+  image: {
+    alt: string;
+    src: string;
+  };
 };
 
-export default function Catalogue({ items }: CatalogueProps) {
-  // useEffect(() => {
-  //   const loadData = async () => {};
-  //   void loadData();
-  // }, []);
+export default function Catalogue() {
+  const [products, setProducts] = useState<ProductType[]>([]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      const response = await axios.get("products");
+      console.log(response.data);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+      setProducts(response.data.products);
+      console.log(products);
+    };
+    void loadData();
+  }, []);
   return (
     <S.Center>
       <Grid container spacing={2} justifyContent="center" maxWidth={900}>
-        {items.map(() => (
+        {products.map((product) => (
           <Grid
+            key={product.id}
             item
             md={4}
             sm={6}
@@ -29,9 +44,9 @@ export default function Catalogue({ items }: CatalogueProps) {
             }}
           >
             <CatalogueItem
-              src="https://cdn.shopify.com/s/files/1/0790/5008/0540/products/Main_c8ff0b5d-c712-429a-be00-b29bd55cbc9d.jpg?v=1689582653"
-              vendor="PRADA"
-              title="Teste de title"
+              src={product.image?.src || ""}
+              vendor={product.vendor}
+              title={product.title}
               newArrival={true}
               currentPrice={2008}
               comparePrice={2500}
