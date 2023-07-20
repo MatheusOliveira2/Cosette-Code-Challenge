@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     color: var(--primary-color);
   }
+
 `;
 
 export default GlobalStyle;
