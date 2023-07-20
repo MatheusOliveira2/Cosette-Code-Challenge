@@ -32,9 +32,8 @@ export default function Catalogue() {
   };
 
   const updateProducts = (result: any) => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    setIsLoading(false);
+
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
     setProducts(result.data.products);
 
@@ -69,7 +68,7 @@ export default function Catalogue() {
   return (
     <S.Center>
       {isLoading ? (
-        <CircularProgress color="primary" />
+        <CircularProgress color="primary" data-testid="loading" />
       ) : (
         <Grid container spacing={2} justifyContent="center" maxWidth={900}>
           {products.map((product) => (

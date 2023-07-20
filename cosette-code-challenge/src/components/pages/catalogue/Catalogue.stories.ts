@@ -1,7 +1,13 @@
+import { expect } from "@storybook/jest";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import Catalogue from "./Catalogue";
-import { mockItems } from "./mock";
+import {
+  userEvent,
+  waitFor,
+  waitForElementToBeRemoved,
+  within,
+} from "@storybook/testing-library";
 
 const meta = {
   title: "Page/Catalogue",
@@ -13,5 +19,19 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: { items: mockItems },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByTestId("loading")).toBeInTheDocument();
+    await waitForElementToBeRemoved(
+      document.querySelector('[data-testid="loading"]')
+    );
+    await expect(canvas.getByText("SAINT LAURENT")).toBeInTheDocument();
+
+    await userEvent.click(canvas.getByLabelText("Go to page 2"));
+
+    await waitForElementToBeRemoved(
+      document.querySelector('[data-testid="loading"]')
+    );
+    await expect(canvas.getByText("JACQUEMUS")).toBeInTheDocument();
+  },
 };
