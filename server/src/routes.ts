@@ -13,7 +13,7 @@ routes.get("/products", async (req: Request, res: Response) => {
     });
 
     return res.json({
-      products,
+      products: normalizeProducts(products),
       nextPageParams: products.nextPageParameters,
       previousPageParams: products.previousPageParameters,
     });
@@ -22,5 +22,18 @@ routes.get("/products", async (req: Request, res: Response) => {
     return res.send(e);
   }
 });
+
+function normalizeProducts(products: any[]) {
+  return products.map((p) => {
+    return {
+      id: p.id,
+      title: p.title,
+      vendor: p.vendor,
+      image: p.image,
+      price: p.variants[0]?.price,
+      compareAtPrice: p.variants[0]?.compare_at_price,
+    };
+  });
+}
 
 export default routes;

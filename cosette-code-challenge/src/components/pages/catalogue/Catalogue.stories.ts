@@ -10,6 +10,7 @@ import {
   waitForElementToBeRemoved,
   within,
 } from "@storybook/testing-library";
+import { page1, page2 } from "./mock";
 
 const meta = {
   title: "Page/Catalogue",
@@ -35,12 +36,11 @@ export const Default: Story = {
 Default.parameters = {
   msw: {
     handlers: {
-      products: rest.get("/products/*", (req, res, ctx) => {
-        console.log(req);
-
+      products: rest.get("http://localhost:3333/products", (req, res, ctx) => {
         return res(
-          // Respond with a 200 status code
-          ctx.status(200)
+          ctx.json({
+            products: page1,
+          })
         );
       }),
     },
@@ -106,12 +106,25 @@ export const Navigation: Story = {
 Navigation.parameters = {
   msw: {
     handlers: {
-      products: rest.get("/products/*", (req, res, ctx) => {
-        console.log(req);
+      products: rest.get("http://localhost:3333/products", (req, res, ctx) => {
+        console.log(req.url);
+        if (req.url.search) {
+          return res(
+            ctx.json({
+              products: page2,
+            })
+          );
+        }
 
         return res(
-          // Respond with a 200 status code
-          ctx.status(200)
+          ctx.json({
+            products: page1,
+            nextPageParams: {
+              limit: "20",
+              page_info:
+                "eyJsYXN0X2lkIjo4NDU4NzA5NDY3NDIwLCJsYXN0X3ZhbHVlIjoiQmFnIDIwIiwiZGlyZWN0aW9uIjoibmV4dCJ9",
+            },
+          })
         );
       }),
     },

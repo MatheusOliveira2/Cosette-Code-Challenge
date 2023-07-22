@@ -13,6 +13,8 @@ type ProductType = {
     alt: string;
     src: string;
   };
+  price: number;
+  compareAtPrice: number;
 };
 
 type GetProductsResponseType = {
@@ -112,8 +114,8 @@ export default function Catalogue() {
                 vendor={product.vendor}
                 title={product.title}
                 newArrival={true}
-                currentPrice={2008}
-                comparePrice={2500}
+                currentPrice={product.price}
+                comparePrice={product.compareAtPrice}
               ></CatalogueItem>
             </Grid>
           ))}
