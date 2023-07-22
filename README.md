@@ -43,7 +43,7 @@ To run the server is necessary to add a .env file with the SHOPIFY_API_TOKEN. Th
 <img width="329" alt="image" src="https://github.com/MatheusOliveira2/Cosette-Code-Challenge/assets/49612947/d7939697-3c97-46c7-86ec-ec3be52afd6e">
 
 
-After the **.env** creation and filling with the "API - Acess token" run you are able to run the project
+After the **.env** creation and filling with the "API - Acess token" you are able to run the project
 
 ### 3. Running the Project
 
