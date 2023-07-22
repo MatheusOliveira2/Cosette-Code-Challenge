@@ -18,7 +18,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.0.27",
-    "styled-components": "^6.0.4"
+    "styled-components": "^6.0.4",
+    "wrap-ansi": "^8.1.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.27",
@@ -50,5 +51,8 @@
   },
   "resolutions": {
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

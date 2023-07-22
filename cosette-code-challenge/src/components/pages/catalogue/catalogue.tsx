@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import CatalogueItem from "../../catalogue-item/CatalogueItem";
 import * as S from "./style";
-import { CircularProgress, Grid, Pagination } from "@mui/material";
+import { Alert, CircularProgress, Grid, Pagination } from "@mui/material";
 import axios from "../../../axios/axios";
 import { AxiosRequestConfig } from "axios";
 
@@ -18,6 +18,7 @@ type ProductType = {
 export default function Catalogue() {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadingError, setLoadingError] = useState(false);
 
   const previousPageParams = useRef(null);
   const nextPageParams = useRef(null);
@@ -26,9 +27,14 @@ export default function Catalogue() {
   const getProducts = async (
     params: AxiosRequestConfig | null
   ): Promise<void> => {
-    setIsLoading(true);
-    const response = await axios.get("products", { params });
-    updateProducts(response);
+    let response;
+    try {
+      setIsLoading(true);
+      response = await axios.get("products", { params });
+      updateProducts(response);
+    } catch (_) {
+      setLoadingError(true);
+    }
   };
 
   const updateProducts = (result: any) => {
@@ -65,13 +71,22 @@ export default function Catalogue() {
     void getProducts(null);
   }, []);
 
+  if (loadingError) {
+    return (
+      <S.Center>
+        <Alert severity="error" data-testid="error">
+          Error on loading products
+        </Alert>
+      </S.Center>
+    );
+  }
   return (
     <S.Center>
       {isLoading ? (
         <CircularProgress color="primary" data-testid="loading" />
       ) : (
         <Grid container spacing={2} justifyContent="center" maxWidth={900}>
-          {products.map((product) => (
+          {products?.map((product) => (
             <Grid
               key={product.id}
               item
