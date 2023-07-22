@@ -15,7 +15,7 @@ This repository contains code developed for the selection process at Cosette in 
 - Vite
   
 ### Project Structure
-<img width="282" alt="image" src="https://github.com/MatheusOliveira2/Cosette-Code-Challenge/assets/49612947/f7154b34-b093-46f6-bfb7-c6caff01ff54">
+<img width="329" alt="image" src="https://github.com/MatheusOliveira2/Cosette-Code-Challenge/assets/49612947/73ae0137-bf3f-484b-b629-9cfae53d8229">
 
   
 ## Running the project
@@ -40,7 +40,7 @@ This line installs the dependencies from both projects (server and cosette-code-
 
 To run the server is necessary to add a .env file with the SHOPIFY_API_TOKEN. This file should be created at server folder.
 
-<img width="282" alt="image" src="https://github.com/MatheusOliveira2/Cosette-Code-Challenge/assets/49612947/045902d4-e13a-4e54-87af-bfc408374486">
+<img width="329" alt="image" src="https://github.com/MatheusOliveira2/Cosette-Code-Challenge/assets/49612947/d7939697-3c97-46c7-86ec-ec3be52afd6e">
 
 
 After the **.env** creation and filling with the "API - Acess token" run you are able to run the project
@@ -71,7 +71,7 @@ This line runs the dev mode from the server and the Storybook.
 ### Tests
   Tests were developed using the Storybook Interaction Tests. 
 
-  ![Screen_Recording_2023-07-22_at_4_35_38_pm_AdobeExpress](https://github.com/MatheusOliveira2/Cosette-Code-Challenge/assets/49612947/dbf45fab-9fac-4cbb-9ea1-b738aa072cfa)
+![Screen_Recording_2023-07-22_at_4_35_38_pm_AdobeExpress](https://github.com/MatheusOliveira2/Cosette-Code-Challenge/assets/49612947/4adb044d-0ca1-464a-8f1b-42ff984395b0)
 
 
 # Acknowledgments
