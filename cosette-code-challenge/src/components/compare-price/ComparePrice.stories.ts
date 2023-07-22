@@ -17,3 +17,9 @@ export const Default: Story = {
     currentPrice: 80,
   },
 };
+
+export const NoComparePrice: Story = {
+  args: {
+    currentPrice: 80,
+  },
+};
