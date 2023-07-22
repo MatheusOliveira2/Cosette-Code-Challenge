@@ -15,13 +15,19 @@ type ProductType = {
   };
 };
 
+type GetProductsResponseType = {
+  products: ProductType[];
+  previousPageParams: AxiosRequestConfig;
+  nextPageParams: AxiosRequestConfig;
+};
+
 export default function Catalogue() {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadingError, setLoadingError] = useState(false);
 
-  const previousPageParams = useRef(null);
-  const nextPageParams = useRef(null);
+  const previousPageParams = useRef<AxiosRequestConfig | null>(null);
+  const nextPageParams = useRef<AxiosRequestConfig | null>(null);
   const currentPage = useRef(1);
 
   const getProducts = async (
@@ -30,27 +36,27 @@ export default function Catalogue() {
     let response;
     try {
       setIsLoading(true);
-      response = await axios.get("products", { params });
+      response = await axios.get<GetProductsResponseType>("products", {
+        params,
+      });
       if (response.status === 400) {
         setLoadingError(true);
       } else {
-        updateProducts(response);
+        updateProducts(response.data);
       }
     } catch (_) {
       setLoadingError(true);
     }
   };
 
-  const updateProducts = (result: any) => {
+  const updateProducts = (result: GetProductsResponseType) => {
     setIsLoading(false);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-    setProducts(result.data.products);
+    setProducts(result.products);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    previousPageParams.current = result.data.previousPageParams;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    nextPageParams.current = result.data.nextPageParams;
+    previousPageParams.current = result.previousPageParams;
+
+    nextPageParams.current = result.nextPageParams;
   };
 
   const nextPage = async () => {

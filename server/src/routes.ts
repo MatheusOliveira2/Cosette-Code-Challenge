@@ -8,7 +8,7 @@ routes.get("/products", async (req: Request, res: Response) => {
 
   try {
     const products = await shopify.product.list({
-      limit: 1,
+      limit: 20,
       ...params,
     });
 

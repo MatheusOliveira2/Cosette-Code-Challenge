@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/await-thenable */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable */
+
 import { expect } from "@storybook/jest";
 import type { Meta, StoryObj } from "@storybook/react";
 import { rest } from "msw";
@@ -29,7 +27,8 @@ export const Default: Story = {
     await waitForElementToBeRemoved(
       document.querySelector('[data-testid="loading"]')
     );
-    await expect(canvas.getByText("SAINT LAURENT")).toBeInTheDocument();
+    await expect(canvas.getByText("Bag 01")).toBeInTheDocument();
+    await expect(canvas.getByText("Bag 20")).toBeInTheDocument();
   },
 };
 
@@ -58,7 +57,7 @@ export const Loading: Story = {
 Loading.parameters = {
   msw: {
     handlers: [
-      rest.get("http://localhost:3333/products", (req, res, ctx) => {
+      rest.get("http://localhost:3333/products", (_req, res, ctx) => {
         return res(ctx.delay("infinite"));
       }),
     ],
@@ -93,14 +92,14 @@ export const Navigation: Story = {
     await waitForElementToBeRemoved(
       document.querySelector('[data-testid="loading"]')
     );
-    await expect(canvas.getByText("SAINT LAURENT")).toBeInTheDocument();
+    await expect(canvas.getByText("Bag 01")).toBeInTheDocument();
 
     await userEvent.click(canvas.getByLabelText("Go to page 2"));
 
     await waitForElementToBeRemoved(
       document.querySelector('[data-testid="loading"]')
     );
-    await expect(canvas.getByText("JACQUEMUS")).toBeInTheDocument();
+    await expect(canvas.getByText("Bag 40")).toBeInTheDocument();
   },
 };
 
