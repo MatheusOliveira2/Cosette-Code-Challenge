@@ -1,10 +1,10 @@
 # Cosette Code Challenge
 ## Matheus Oliveira
 
-Code developed for a selection process at Cosette - Sydney - Australia
+This repository contains code developed for the selection process at Cosette in Sydney, Australia.
 
-### Techs
-- Javascript/Typescript
+### Technologies Used
+- JavaScript/TypeScript
 - HTML
 - CSS
 - React
@@ -13,12 +13,16 @@ Code developed for a selection process at Cosette - Sydney - Australia
 - Styled Components
 - Storybook
 - Vite
-
+  
 ### Project Structure
 <img width="282" alt="image" src="https://github.com/MatheusOliveira2/Cosette-Code-Challenge/assets/49612947/f7154b34-b093-46f6-bfb7-c6caff01ff54">
 
   
 ## Running the project
+
+### 1. Installation
+
+Follow the steps below to set up and run the project:
 
 In the root folder run: 
 ``
@@ -32,12 +36,16 @@ npm run initialize
 
 This line installs the dependencies from both projects (server and cosette-code-challenge)
 
+### 2. Setup Server Environment
+
 To run the server is necessary to add a .env file with the SHOPIFY_API_TOKEN. This file should be created at server folder.
 
 <img width="282" alt="image" src="https://github.com/MatheusOliveira2/Cosette-Code-Challenge/assets/49612947/045902d4-e13a-4e54-87af-bfc408374486">
 
 
 After the **.env** creation and filling with the "API - Acess token" run you are able to run the project
+
+### 3. Running the Project
 
 ### Running in the browser
 In the root folder run:
@@ -47,9 +55,9 @@ npm run dev
 
 This line runs the dev mode from the server and the frontend concurrently.
 
-- The default URL is: http://127.0.0.1:5173/
+- Access the project in your browser at the default URL: http://127.0.0.1:5173/
 
-### Running the Storybook
+### Running Storybook
 In the root folder run:
 ``
 npm run storybook
@@ -58,12 +66,16 @@ npm run storybook
 
 This line runs the dev mode from the server and the Storybook.
 
-- The default URL is: http://localhost:6006/
+- Access Storybook in your browser at the default URL: http://localhost:6006/
 
 ### Tests
   Tests were developed using the Storybook Interaction Tests. 
 
   ![Screen_Recording_2023-07-22_at_4_35_38_pm_AdobeExpress](https://github.com/MatheusOliveira2/Cosette-Code-Challenge/assets/49612947/dbf45fab-9fac-4cbb-9ea1-b738aa072cfa)
+
+
+# Acknowledgments
+Special thanks to Cosette for providing this code challenge opportunity.
 
   
 
