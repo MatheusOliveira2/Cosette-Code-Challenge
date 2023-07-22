@@ -22,11 +22,7 @@ export default function CatalogueItem({
   return (
     <>
       <S.ItemCard variant="outlined">
-        <S.CardImage
-          content="img"
-          image={src}
-          onError={(e) => console.log(e)}
-        ></S.CardImage>
+        <S.CardImage content="img" image={src ? src : noImage}></S.CardImage>
         <S.Content>
           <S.Info>
             <div className={`newArrival ${newArrival ? "" : "hidden"}`}>

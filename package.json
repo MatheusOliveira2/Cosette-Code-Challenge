@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "initialize": "concurrently \"cd ./server && yarn install\" \"cd ./cosette-code-challenge && yarn install\"",
+    "dev": "concurrently \"cd ./server && yarn dev\" \"cd ./cosette-code-challenge && yarn dev\"",
+    "storybook": "concurrently \"cd ./server && yarn dev\" \"cd ./cosette-code-challenge && yarn storybook\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
