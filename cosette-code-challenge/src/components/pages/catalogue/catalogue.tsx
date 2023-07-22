@@ -31,7 +31,11 @@ export default function Catalogue() {
     try {
       setIsLoading(true);
       response = await axios.get("products", { params });
-      updateProducts(response);
+      if (response.status === 400) {
+        setLoadingError(true);
+      } else {
+        updateProducts(response);
+      }
     } catch (_) {
       setLoadingError(true);
     }

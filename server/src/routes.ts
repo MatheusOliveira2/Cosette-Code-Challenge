@@ -5,16 +5,22 @@ const routes = express.Router();
 
 routes.get("/products", async (req: Request, res: Response) => {
   const params = req.query;
-  const products = await shopify.product.list({
-    limit: 1,
-    ...params,
-  });
 
-  return res.json({
-    products,
-    nextPageParams: products.nextPageParameters,
-    previousPageParams: products.previousPageParameters,
-  });
+  try {
+    const products = await shopify.product.list({
+      limit: 1,
+      ...params,
+    });
+
+    return res.json({
+      products,
+      nextPageParams: products.nextPageParameters,
+      previousPageParams: products.previousPageParameters,
+    });
+  } catch (e) {
+    res.status(400);
+    return res.send(e);
+  }
 });
 
 export default routes;
